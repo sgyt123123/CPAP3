@@ -1,11 +1,13 @@
 #include "widget.h"
 #include "./ui_widget.h"
+//#include <thread>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
+    startTimer(500);
 
     QMenuBar* pMenuBar = new QMenuBar(this);
 
@@ -55,16 +57,42 @@ Widget::Widget(QWidget *parent)
 //    AxX->setRange(0, 20);
 
 
-    auto m_chart = new Chart();
+    //auto m_chart = new QChart();
     //m_chart->setTitle("Dynamic spline chart");
     //m_chart->legend()->hide();
-    ui->widget->setRenderHint(QPainter::Antialiasing);
+//    ui->widget->setRenderHint(QPainter::Antialiasing);
 
-    ui->widget->setChart(m_chart);
+//    ui->widget->setChart(m_chart);
+
+
+//    std::thread a([&]{
+//        qDebug() << "fuck";
+//        while(true){
+//            QThread::msleep(500);
+//            //qDebug() << "fuck";
+//            ui->widget->add(QRandomGenerator::global()->bounded(10) - 5);
+//        }
+//    });
+//    std::thread b([&]{
+//        while(true){
+//            //QThread::msleep(1000);
+//            //qDebug() << "shit";
+//            QThread::msleep(500);
+//            ui->widget_3->add(QRandomGenerator::global()->bounded(10) - 5);
+//        }
+//    });
+//    a.detach();
+//    b.detach();
 }
 
 Widget::~Widget()
 {
     delete ui;
+}
+
+void Widget::timerEvent(QTimerEvent *){
+    ui->widget->add(QRandomGenerator::global()->bounded(5) - 2.5);
+    ui->widget_2->add(QRandomGenerator::global()->bounded(10) - 5);
+    ui->widget_3->add(QRandomGenerator::global()->bounded(5) - 2.5);
 }
 

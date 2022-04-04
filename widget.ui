@@ -294,7 +294,7 @@
     </layout>
    </widget>
   </widget>
-  <widget class="QChartView" name="widget" native="true">
+  <widget class="ChartView" name="widget" native="true">
    <property name="geometry">
     <rect>
      <x>419</x>
@@ -304,7 +304,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QChartView" name="widget_2" native="true">
+  <widget class="ChartView" name="widget_2" native="true">
    <property name="geometry">
     <rect>
      <x>420</x>
@@ -314,7 +314,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QChartView" name="widget_3" native="true">
+  <widget class="ChartView" name="widget_3" native="true">
    <property name="geometry">
     <rect>
      <x>420</x>
@@ -327,9 +327,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>QChartView</class>
+   <class>ChartView</class>
    <extends>QWidget</extends>
-   <header>qchartview.h</header>
+   <header>chartview.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

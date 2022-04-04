@@ -5,7 +5,7 @@
 #include <QtCharts>
 #include <QChartView>
 #include <QLineSeries>
-#include "chart.h"
+#include "chartview.h"
 QT_CHARTS_USE_NAMESPACE
 
 QT_BEGIN_NAMESPACE
@@ -19,6 +19,8 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
+
+    void timerEvent(QTimerEvent *);
 
 private:
     Ui::Widget *ui;

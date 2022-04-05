@@ -1,6 +1,6 @@
 #include "widget.h"
 #include "./ui_widget.h"
-#include <thread>
+//#include <thread>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -83,22 +83,60 @@ Widget::Widget(QWidget *parent)
 //    });
 //    a.detach();
 //    b.detach();
+
+    //QRadioButton* radio = new QRadioButton;
+//    cv[0].setParent(ui->chart_area);
+//    cv[1].setParent(ui->chart_area);
+//    cv[2].setParent(ui->chart_area);
+
+    QGridLayout *vbox = new QGridLayout(ui->chart_area);
+    vbox->addWidget(&cv[0]);
+    vbox->addWidget(&cv[1]);
+    vbox->addWidget(&cv[2]);
+    //vbox->addStretch(1);
+    ui->chart_area->setLayout(vbox);
+
+
+    //auto chart_array = ui->chart_area->children();
+
+    for(int i = 0;i < 3;i++){
+        m_list[i] = new Worker(&cv[i]);
+        m_list[i]->moveToThread(&workerThread[i]);
+        connect(this, SIGNAL(operate(const int)), m_list[i], SLOT(start(int)));
+        workerThread[i].start();
+    }
+
+    cv[0].getline()->setName("cmH2O");
+    cv[0].getline()->setColor(Qt::green);
+    cv[1].getline()->setName("ml");
+    cv[1].getline()->setColor(Qt::red);
+    cv[2].getline()->setName("LPM");
+    cv[2].getline()->setColor(Qt::blue);
+
+    emit operate(500);
 }
 
 Widget::~Widget()
 {
     delete ui;
+    for(int i = 0;i<3;i++){
+        workerThread[i].quit();
+        workerThread[i].wait();
+    }
 }
 
 void Widget::timerEvent(QTimerEvent *){
-    ui->widget->add(QRandomGenerator::global()->bounded(5) - 2.5);
-    std::thread a([&](){
-        ui->widget_2->add(QRandomGenerator::global()->bounded(10) - 5);
-    });
-    a.detach();
+//    ui->widget->add(QRandomGenerator::global()->bounded(5) - 2.5);
+//    std::thread a([&](){
+//        ui->widget_2->add(QRandomGenerator::global()->bounded(10) - 5);
+//        qDebug() << "\tCurrent thread ID: " << QThread::currentThreadId();
+//    });
+//    a.detach();
 //    std::thread b([&](){
 //        ui->widget_3->add(QRandomGenerator::global()->bounded(10) - 5);
+//        qDebug() << "\tCurrent thread ID: " << QThread::currentThreadId();
 //    });
+//    b.detach();
     //ui->widget_2->add(QRandomGenerator::global()->bounded(10) - 5);
     //ui->widget_3->add(QRandomGenerator::global()->bounded(5) - 2.5);
 }

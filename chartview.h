@@ -21,6 +21,10 @@ public:
 
     void add(qreal);
 
+    QLineSeries* getline();
+
+    //void timerEvent(QTimerEvent *);
+
 private:
     QChart* m_chart;
     QSplineSeries *m_series;
@@ -28,6 +32,9 @@ private:
     QValueAxis *m_axisY;
     qreal m_x;
     qreal m_y;
+
+//public slots:
+//    void start(int);
 };
 
 #endif /* CHARTVIEW_H */

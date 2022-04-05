@@ -11,11 +11,13 @@ CONFIG += c++17
 SOURCES += \
     chartview.cpp \
     main.cpp \
-    widget.cpp
+    widget.cpp \
+    worker.cpp
 
 HEADERS += \
     chartview.h \
-    widget.h
+    widget.h \
+    worker.h
 
 FORMS += \
     widget.ui

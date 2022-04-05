@@ -1,6 +1,6 @@
 #include "widget.h"
 #include "./ui_widget.h"
-//#include <thread>
+#include <thread>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -92,7 +92,14 @@ Widget::~Widget()
 
 void Widget::timerEvent(QTimerEvent *){
     ui->widget->add(QRandomGenerator::global()->bounded(5) - 2.5);
-    ui->widget_2->add(QRandomGenerator::global()->bounded(10) - 5);
-    ui->widget_3->add(QRandomGenerator::global()->bounded(5) - 2.5);
+    std::thread a([&](){
+        ui->widget_2->add(QRandomGenerator::global()->bounded(10) - 5);
+    });
+    a.detach();
+//    std::thread b([&](){
+//        ui->widget_3->add(QRandomGenerator::global()->bounded(10) - 5);
+//    });
+    //ui->widget_2->add(QRandomGenerator::global()->bounded(10) - 5);
+    //ui->widget_3->add(QRandomGenerator::global()->bounded(5) - 2.5);
 }
 

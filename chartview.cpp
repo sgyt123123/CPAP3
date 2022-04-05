@@ -11,7 +11,7 @@ ChartView::ChartView(QWidget *parent, QChart *chart):
     m_series(0),
     m_axisX(new QValueAxis()),
     m_axisY(new QValueAxis()),
-    m_x(10),
+    m_x(5),
     m_y(0)
 {
 //    QObject::connect(&m_timer, &QTimer::timeout, this, &Chart::handleTimeout);
@@ -32,11 +32,11 @@ ChartView::ChartView(QWidget *parent, QChart *chart):
     m_chart->addAxis(m_axisY,Qt::AlignLeft);
     m_series->attachAxis(m_axisX);
     m_series->attachAxis(m_axisY);
-    m_axisX->setTickCount(m_x + 1);
+    m_axisX->setTickCount(m_x * 2 + 1);
     m_axisX->setRange(0, m_x);
     m_axisY->setRange(-5, 10);
 
-    m_chart->setAnimationOptions(QChart::SeriesAnimations);
+    m_chart->setAnimationOptions(QChart::AllAnimations);
     setRenderHint(QPainter::Antialiasing);  //抗锯齿
 
     m_chart->layout()->setContentsMargins(0, 0, 0, 0);

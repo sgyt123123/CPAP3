@@ -7,6 +7,7 @@
 #include <QLineSeries>
 #include "chartview.h"
 #include "worker.h"
+
 QT_CHARTS_USE_NAMESPACE
 
 QT_BEGIN_NAMESPACE
@@ -21,7 +22,7 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 
-    void timerEvent(QTimerEvent *);
+    //void timerEvent(QTimerEvent *);
 
 private:
     Ui::Widget *ui;

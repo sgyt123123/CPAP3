@@ -19,22 +19,23 @@ public:
 
     virtual ~ChartView();
 
-    void add(qreal);
-
     QLineSeries* getline();
 
     //void timerEvent(QTimerEvent *);
 
 private:
     QChart* m_chart;
-    QSplineSeries *m_series;
+    //QSplineSeries *m_series;
+    QLineSeries *m_series;
     QValueAxis *m_axisX;
     QValueAxis *m_axisY;
+
+    const int scale;
     qreal m_x;
     qreal m_y;
 
-//public slots:
-//    void start(int);
+public slots:
+    void add(qreal);
 };
 
 #endif /* CHARTVIEW_H */

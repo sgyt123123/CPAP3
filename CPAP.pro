@@ -1,4 +1,4 @@
-QT       += core gui charts
+QT       += core gui charts serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -11,15 +11,18 @@ CONFIG += c++17
 SOURCES += \
     chartview.cpp \
     main.cpp \
+    sp_widget.cpp \
     widget.cpp \
     worker.cpp
 
 HEADERS += \
     chartview.h \
+    sp_widget.h \
     widget.h \
     worker.h
 
 FORMS += \
+    sp_widget.ui \
     widget.ui
 
 # Default rules for deployment.

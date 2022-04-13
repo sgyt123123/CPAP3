@@ -18,9 +18,10 @@ private:
     ChartView *m_cv;
 
 public slots:
-    void start(int);
+    void read(qreal);
 
-//signals:
+signals:
+    void sendRead(qreal);
 //    void resultReady(const int result);  // 线程完成工作时发送的信号
 };
 

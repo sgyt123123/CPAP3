@@ -17,6 +17,7 @@ SOURCES += \
 
 HEADERS += \
     chartview.h \
+    qcustomplot.h \
     sp_widget.h \
     widget.h \
     worker.h

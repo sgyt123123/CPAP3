@@ -10,11 +10,10 @@ SP_Widget::SP_Widget(QWidget *parent, ChartView *cv) :
     this->setWindowTitle("serial");
 
     //搜索所有可用串口
-    int index = 0;
     foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()) {
         QString name = info.portName();
-        qDebug() << name;
-        serialWin[index++] = nullptr;
+
+        serialWin.push_back(nullptr);
         ui->serialBox->addItem(name);
 
         qDebug() << "Name : " << name;

@@ -41,7 +41,7 @@ private:
     Ui::SP_Widget *ui;
     ChartView *m_cv;
     QMap<int, QSerialPort*> serialPort;  //串口号 串口
-    QMap<int, ChartView*> serialWin;      //串口号 窗口号
+    QVector<ChartView*> serialWin;      //串口号 窗口号
     QMap<int, QThread*> winThread;         //窗口号 线程
     QMap<int, Worker*> workerList;
 
